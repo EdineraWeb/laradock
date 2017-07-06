@@ -358,7 +358,7 @@ RUN if [ ${INSTALL_LARAVEL_ENVOY} = true ]; then \
 #####################################
 # Laravel Installer:
 #####################################
-USER root
+USER laradock
 
 ARG INSTALL_LARAVEL_INSTALLER=false
 ENV INSTALL_LARAVEL_INSTALLER ${INSTALL_LARAVEL_INSTALLER}
@@ -370,29 +370,19 @@ RUN if [ ${INSTALL_LARAVEL_INSTALLER} = true ]; then \
 	&& composer global require "laravel/installer" \
 ;fi
 
-USER laradock
-
 #####################################
 # Spark Installer
 #####################################
 
-USER root
-
-ARG SPARK_INSTALLER=false
-ENV SPARK_INSTALLER ${SPARK_INSTALLER}
-
-ARG SPARK_TOKEN=null
-ENV SPARK_TOKEN ${SPARK_TOKEN}
-
-RUN if [ ${SPARK_INSTALLER} = true ]; then \
-    composer global require "laravel/spark-installer=~1.0"
-;fi
-
-RUN if [ ${SPARK_INSTALLER} != null ]; then \
-    spark register ${SPARK_TOKEN}
-;fi
-
 USER laradock
+
+ARG INSTALL_SPARK_INSTALLER=false
+ENV INSTALL_SPARK_INSTALLER ${INSTALL_SPARK_INSTALLER}
+
+RUN if [ ${INSTALL_SPARK_INSTALLER} = true ]; then \
+    # Install Spark
+    composer global require "laravel/spark-installer" \
+;fi
 
 #####################################
 # Deployer:
