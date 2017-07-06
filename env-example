@@ -52,6 +52,8 @@ WORKSPACE_YARN_VERSION=latest
 WORKSPACE_TIMEZONE=UTC
 WORKSPACE_SSH_PORT=2222
 WORKSPACE_INSTALL_SPARK_INSTALLER=false
+WORKSPACE_SPARK_TOKEN=
+
 ### PHP_FPM ############################################################################################################
 
 PHP_FPM_INSTALL_XDEBUG=false
