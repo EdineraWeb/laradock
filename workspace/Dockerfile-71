@@ -374,7 +374,7 @@ RUN if [ ${INSTALL_LARAVEL_INSTALLER} = true ]; then \
 # Spark Installer
 #####################################
 
-USER laradock
+USER root
 
 ARG INSTALL_SPARK_INSTALLER=false
 ENV INSTALL_SPARK_INSTALLER ${INSTALL_SPARK_INSTALLER}
@@ -383,6 +383,8 @@ RUN if [ ${INSTALL_SPARK_INSTALLER} = true ]; then \
     # Install Spark
     composer global require "laravel/spark-installer" \
 ;fi
+
+USER laradock
 
 #####################################
 # Deployer:

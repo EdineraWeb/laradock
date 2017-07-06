@@ -35,6 +35,7 @@ alias db:reset="php artisan migrate:reset && php artisan migrate --seed"
 alias migrate="php artisan migrate"
 alias seed="php artisan:seed"
 alias phpunit="./vendor/bin/phpunit"
+alias spark="~/.composer/vendor/bin/spark"
 
 
 # requires installation of 'https://www.npmjs.com/package/npms-cli'
